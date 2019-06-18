@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C55B42B22B9ACD20048F896 /* ShellOut in Frameworks */ = {isa = PBXBuildFile; productRef = 0C55B42A22B9ACD20048F896 /* ShellOut */; };
 		0CCEB1BF22B99BB700822EE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCEB1BE22B99BB700822EE4 /* AppDelegate.swift */; };
 		0CCEB1C122B99BB700822EE4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCEB1C022B99BB700822EE4 /* ViewController.swift */; };
 		0CCEB1C322B99BB800822EE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CCEB1C222B99BB800822EE4 /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C55B42B22B9ACD20048F896 /* ShellOut in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +84,9 @@
 			dependencies = (
 			);
 			name = RepoViz;
+			packageProductDependencies = (
+				0C55B42A22B9ACD20048F896 /* ShellOut */,
+			);
 			productName = RepoViz;
 			productReference = 0CCEB1BB22B99BB700822EE4 /* RepoViz.app */;
 			productType = "com.apple.product-type.application";
@@ -110,6 +115,9 @@
 				Base,
 			);
 			mainGroup = 0CCEB1B222B99BB700822EE4;
+			packageReferences = (
+				0C55B42922B9ACD20048F896 /* XCRemoteSwiftPackageReference "ShellOut" */,
+			);
 			productRefGroup = 0CCEB1BC22B99BB700822EE4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -329,6 +337,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0C55B42922B9ACD20048F896 /* XCRemoteSwiftPackageReference "ShellOut" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JohnSundell/ShellOut.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0C55B42A22B9ACD20048F896 /* ShellOut */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0C55B42922B9ACD20048F896 /* XCRemoteSwiftPackageReference "ShellOut" */;
+			productName = ShellOut;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0CCEB1B322B99BB700822EE4 /* Project object */;
 }

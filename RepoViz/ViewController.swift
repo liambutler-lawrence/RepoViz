@@ -11,6 +11,23 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let hardCodedRepo = RepoModel(name: "ios-mobile-client", repoParentFolderPath: URL(fileURLWithPath: "/Users/liam/repos/"))
+
+        currentBranchTextField.stringValue = hardCodedRepo.branchName ?? "ERROR"
+        numberOfCommitsBehindRemoteTextField.stringValue = hardCodedRepo.numberOfCommitsBehindRemote.map { String($0) } ?? "ERROR"
+
+        let dateComponentsFormatter = DateComponentsFormatter()
+        timeIntervalBehindRemoteTextField.stringValue = hardCodedRepo.timeIntervalBehindRemote
+            .flatMap { dateComponentsFormatter.string(from: $0)} ?? "ERROR"
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .medium
+        latestCommitDateTextField.stringValue = hardCodedRepo.latestCommitDate
+            .map { dateFormatter.string(from: $0)} ?? "ERROR"
+        latestRemoteCommitDateTextField.stringValue = hardCodedRepo.latestRemoteCommitDate
+            .map { dateFormatter.string(from: $0)} ?? "ERROR"
+
         // Do any additional setup after loading the view.
     }
 

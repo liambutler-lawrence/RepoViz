@@ -1,29 +1,17 @@
 import Foundation
-
-
+import ShellOut
 
 struct RepoModel {
 
-    private func shell(launchPath: String = "/bin/bash", _ arguments: String...) -> String?
-    {
-        let task = Process()
-        task.launchPath = launchPath
-        task.arguments = ["-c"] + arguments
+    let name: String
+    let repoParentFolderPath: URL
 
-        let pipe = Pipe()
-        task.standardOutput = pipe
-        task.launch()
-
-        let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        let output = String(data: data, encoding: String.Encoding.utf8)
-
-        return output
+    var shellCommandDirectory: String {
+        return repoParentFolderPath.appendingPathComponent(name, isDirectory: true).path
     }
 
-    let name: String
-
     var branchName: String? {
-        let branchName = shell("git branch | grep \\* | cut -d ' ' -f2")
+        let branchName = try? shellOut(to: "git branch | grep \\* | cut -d ' ' -f2", at: shellCommandDirectory)
 
         guard branchName != "(HEAD" else {
             return nil
@@ -36,9 +24,9 @@ struct RepoModel {
     }
 
     var numberOfCommitsBehindRemote: Int? {
-        let numberString = branchName.flatMap { shell("git rev-list --count origin/\($0)...\($0)") }
-
-        return numberString.flatMap { Int($0) }
+        return branchName
+            .flatMap { try? shellOut(to: "git rev-list --count origin/\($0)...\($0)", at: shellCommandDirectory) }
+            .flatMap { Int($0) }
     }
 
     var latestRemoteCommitDate: Date? {
@@ -46,9 +34,8 @@ struct RepoModel {
     }
 
     func dateOfLatestCommit(onBranch branchName: String?) -> Date? {
-        let dateString = branchName.flatMap { shell("git show -s --format=%ct \($0)") }
-
-        return dateString
+        return branchName
+            .flatMap { try? shellOut(to: "git show -s --format=%ct \($0)", at: shellCommandDirectory) }
             .flatMap { TimeInterval($0) }
             .map { Date(timeIntervalSince1970: $0) }
     }
@@ -57,12 +44,6 @@ struct RepoModel {
         return latestRemoteCommitDate.flatMap { latestCommitDate?.timeIntervalSince($0) }
     }
 }
-
-//struct RepoInformationService {
-//    func getInfo() -> RepoModel {
-//
-//    }
-//}
 
 
 // data
