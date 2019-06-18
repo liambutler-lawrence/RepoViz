@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14810.11"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -619,7 +620,7 @@
                                         <menuItem title="Show Sidebar" keyEquivalent="s" id="kIP-vf-haE">
                                             <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                             <connections>
-                                                <action selector="toggleSourceList:" target="Ady-hI-5gd" id="iwa-gc-5KM"/>
+                                                <action selector="toggleSidebar:" target="Ady-hI-5gd" id="iwa-gc-5KM"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Enter Full Screen" keyEquivalent="f" id="4J7-dP-txa">
@@ -713,10 +714,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="489" height="270"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bn2-8I-22o">
-                                        <rect key="frame" x="0.0" y="153" width="241" height="117"/>
+                                        <rect key="frame" x="0.0" y="158" width="241" height="112"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pHA-lT-oF5">
-                                                <rect key="frame" x="-2" y="100" width="96" height="17"/>
+                                                <rect key="frame" x="-2" y="96" width="96" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Current branch" id="EBl-25-jBE">
                                                     <font key="font" usesAppearanceFont="YES"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -724,7 +725,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6Bb-EA-o9h">
-                                                <rect key="frame" x="-2" y="75" width="215" height="17"/>
+                                                <rect key="frame" x="-2" y="72" width="215" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Number of commits behind remote" id="q5Q-YG-Iam">
                                                     <font key="font" usesAppearanceFont="YES"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -732,7 +733,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gfx-ER-sMb">
-                                                <rect key="frame" x="-2" y="50" width="174" height="17"/>
+                                                <rect key="frame" x="-2" y="48" width="174" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Time interval behind remote" id="EWs-7x-Qn5">
                                                     <font key="font" usesAppearanceFont="YES"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -740,7 +741,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DRF-7V-3sT">
-                                                <rect key="frame" x="-2" y="25" width="121" height="17"/>
+                                                <rect key="frame" x="-2" y="24" width="121" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Latest commit date" id="97B-P5-MFy">
                                                     <font key="font" usesAppearanceFont="YES"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -748,7 +749,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vj9-f1-n8r">
-                                                <rect key="frame" x="-2" y="0.0" width="168" height="17"/>
+                                                <rect key="frame" x="-2" y="0.0" width="168" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Latest remote commit date" id="vfc-c2-FGL">
                                                     <font key="font" usesAppearanceFont="YES"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -772,10 +773,10 @@
                                         </customSpacing>
                                     </stackView>
                                     <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T1R-up-tsA">
-                                        <rect key="frame" x="249" y="128" width="240" height="142"/>
+                                        <rect key="frame" x="249" y="158" width="240" height="112"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZIP-l2-zq5">
-                                                <rect key="frame" x="-2" y="125" width="21" height="17"/>
+                                                <rect key="frame" x="-2" y="96" width="21" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="&lt;&gt;" id="RYc-o3-GdL">
                                                     <font key="font" usesAppearanceFont="YES"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -783,7 +784,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pMG-7R-87w">
-                                                <rect key="frame" x="-2" y="100" width="21" height="17"/>
+                                                <rect key="frame" x="-2" y="72" width="21" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="&lt;&gt;" id="6xD-DA-Bw2">
                                                     <font key="font" usesAppearanceFont="YES"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -791,7 +792,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kux-aO-2u4">
-                                                <rect key="frame" x="-2" y="75" width="21" height="17"/>
+                                                <rect key="frame" x="-2" y="48" width="21" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="&lt;&gt;" id="mCO-a4-tHU">
                                                     <font key="font" usesAppearanceFont="YES"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -799,7 +800,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vg0-Gg-cCp">
-                                                <rect key="frame" x="-2" y="50" width="21" height="17"/>
+                                                <rect key="frame" x="-2" y="24" width="21" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="&lt;&gt;" id="8mO-ET-pGC">
                                                     <font key="font" usesAppearanceFont="YES"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -807,16 +808,8 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="05s-eB-HEW">
-                                                <rect key="frame" x="-2" y="25" width="21" height="17"/>
+                                                <rect key="frame" x="-2" y="0.0" width="21" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="&lt;&gt;" id="Q3P-AU-82X">
-                                                    <font key="font" usesAppearanceFont="YES"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0QI-ZT-OQ7">
-                                                <rect key="frame" x="-2" y="0.0" width="21" height="17"/>
-                                                <textFieldCell key="cell" lineBreakMode="clipping" title="&lt;&gt;" id="EMD-tn-EWs">
                                                     <font key="font" usesAppearanceFont="YES"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -829,10 +822,8 @@
                                             <integer value="1000"/>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
-                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>

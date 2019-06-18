@@ -17,18 +17,18 @@ class ViewController: NSViewController {
         numberOfCommitsBehindRemoteTextField.stringValue = hardCodedRepo.numberOfCommitsBehindRemote.map { String($0) } ?? "ERROR"
 
         let dateComponentsFormatter = DateComponentsFormatter()
+        dateComponentsFormatter.unitsStyle = .abbreviated
         timeIntervalBehindRemoteTextField.stringValue = hardCodedRepo.timeIntervalBehindRemote
             .flatMap { dateComponentsFormatter.string(from: $0)} ?? "ERROR"
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .medium
+
         latestCommitDateTextField.stringValue = hardCodedRepo.latestCommitDate
             .map { dateFormatter.string(from: $0)} ?? "ERROR"
         latestRemoteCommitDateTextField.stringValue = hardCodedRepo.latestRemoteCommitDate
             .map { dateFormatter.string(from: $0)} ?? "ERROR"
-
-        // Do any additional setup after loading the view.
     }
 
     override var representedObject: Any? {
@@ -36,8 +36,6 @@ class ViewController: NSViewController {
         // Update the view, if already loaded.
         }
     }
-
-
 }
 
 // actions

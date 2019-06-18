@@ -41,7 +41,7 @@ struct RepoModel {
     }
 
     var timeIntervalBehindRemote: TimeInterval? {
-        return latestRemoteCommitDate.flatMap { latestCommitDate?.timeIntervalSince($0) }
+        return latestCommitDate.flatMap { latestRemoteCommitDate?.timeIntervalSince($0) }
     }
 }
 
