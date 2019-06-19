@@ -41,6 +41,7 @@ private extension ViewController {
     // MARK: - Functions
 
     func reloadUI() {
+        repoStackView.subviews.forEach { $0.removeFromSuperview() }
         repoNames.forEach {
             let repoName = RepoModel(
                 name: $0,
