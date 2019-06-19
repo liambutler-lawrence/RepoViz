@@ -2,15 +2,6 @@ import Cocoa
 
 class ViewController: NSViewController {
 
-    // MARK: - Constants
-
-    let repoParentFolderPath = "/Users/liam/repos/"
-    let repoNames = [
-        "ios-mobile-client",
-        "ios-mobile-sdk",
-        "mobile-client-configurations"
-    ]
-
     // MARK: - Interface Build Outlets
 
     @IBOutlet var repoStackView: NSStackView!
@@ -42,36 +33,33 @@ private extension ViewController {
 
     func reloadUI() {
         repoStackView.subviews.forEach { $0.removeFromSuperview() }
-        repoNames.forEach {
-            let repoName = RepoModel(
-                name: $0,
-                repoParentFolderPath: URL(fileURLWithPath: repoParentFolderPath)
-            )
+
+        let repoGraphModel = RepoGraphModel()
+        repoGraphModel.repoModels.forEach { repoModel in
 
             let repoView = RepoView()
             repoStackView.addArrangedSubview(repoView)
 
-            repoView.repoNameTextField.stringValue = repoName.name
-            repoView.currentBranchTextField.stringValue = repoName.branchName ?? "ERROR"
+            repoView.repoNameTextField.stringValue = repoModel.name
+            repoView.currentBranchTextField.stringValue = repoModel.branchName ?? "ERROR"
 
-            repoView.numberOfCommitsBehindRemoteTextField.stringValue = repoName.numberOfCommitsBehindRemote
+            repoView.numberOfCommitsBehindRemoteTextField.stringValue = repoModel.numberOfCommitsBehindRemote
                 .map { String($0) } ?? "ERROR"
 
             let dateComponentsFormatter = DateComponentsFormatter()
             dateComponentsFormatter.unitsStyle = .abbreviated
-            repoView.timeIntervalBehindRemoteTextField.stringValue = repoName.timeIntervalBehindRemote
+            repoView.timeIntervalBehindRemoteTextField.stringValue = repoModel.timeIntervalBehindRemote
                 .flatMap { dateComponentsFormatter.string(from: $0)} ?? "ERROR"
 
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .medium
             dateFormatter.timeStyle = .medium
 
-            repoView.latestCommitDateTextField.stringValue = repoName.latestCommitDate
+            repoView.latestCommitDateTextField.stringValue = repoModel.latestCommitDate
                 .map { dateFormatter.string(from: $0)} ?? "ERROR"
-            repoView.latestRemoteCommitDateTextField.stringValue = repoName.latestRemoteCommitDate
+            repoView.latestRemoteCommitDateTextField.stringValue = repoModel.latestRemoteCommitDate
                 .map { dateFormatter.string(from: $0)} ?? "ERROR"
         }
-
     }
 }
 

@@ -15,6 +15,7 @@
 		0CCEB1CF22B99E2C00822EE4 /* RepoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCEB1CE22B99E2C00822EE4 /* RepoModel.swift */; };
 		0CD20FE122B9B83B009F56C5 /* RepoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD20FE022B9B83B009F56C5 /* RepoView.xib */; };
 		0CD20FE322B9B863009F56C5 /* RepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD20FE222B9B863009F56C5 /* RepoView.swift */; };
+		0CD20FE522B9C5CF009F56C5 /* RepoGraphModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD20FE422B9C5CF009F56C5 /* RepoGraphModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		0CCEB1CE22B99E2C00822EE4 /* RepoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoModel.swift; sourceTree = "<group>"; };
 		0CD20FE022B9B83B009F56C5 /* RepoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepoView.xib; sourceTree = "<group>"; };
 		0CD20FE222B9B863009F56C5 /* RepoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoView.swift; sourceTree = "<group>"; };
+		0CD20FE422B9C5CF009F56C5 /* RepoGraphModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoGraphModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				0CCEB1BE22B99BB700822EE4 /* AppDelegate.swift */,
 				0CCEB1C022B99BB700822EE4 /* ViewController.swift */,
 				0CCEB1CE22B99E2C00822EE4 /* RepoModel.swift */,
+				0CD20FE422B9C5CF009F56C5 /* RepoGraphModel.swift */,
 				0CCEB1C222B99BB800822EE4 /* Assets.xcassets */,
 				0CCEB1C422B99BB800822EE4 /* Main.storyboard */,
 				0CD20FE022B9B83B009F56C5 /* RepoView.xib */,
@@ -153,6 +156,7 @@
 			files = (
 				0CCEB1C122B99BB700822EE4 /* ViewController.swift in Sources */,
 				0CCEB1BF22B99BB700822EE4 /* AppDelegate.swift in Sources */,
+				0CD20FE522B9C5CF009F56C5 /* RepoGraphModel.swift in Sources */,
 				0CD20FE322B9B863009F56C5 /* RepoView.swift in Sources */,
 				0CCEB1CF22B99E2C00822EE4 /* RepoModel.swift in Sources */,
 			);
