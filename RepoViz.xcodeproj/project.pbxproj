@@ -13,6 +13,8 @@
 		0CCEB1C322B99BB800822EE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CCEB1C222B99BB800822EE4 /* Assets.xcassets */; };
 		0CCEB1C622B99BB800822EE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CCEB1C422B99BB800822EE4 /* Main.storyboard */; };
 		0CCEB1CF22B99E2C00822EE4 /* RepoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCEB1CE22B99E2C00822EE4 /* RepoModel.swift */; };
+		0CD20FE122B9B83B009F56C5 /* RepoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD20FE022B9B83B009F56C5 /* RepoView.xib */; };
+		0CD20FE322B9B863009F56C5 /* RepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD20FE222B9B863009F56C5 /* RepoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		0CCEB1C722B99BB800822EE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CCEB1C822B99BB800822EE4 /* RepoViz.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RepoViz.entitlements; sourceTree = "<group>"; };
 		0CCEB1CE22B99E2C00822EE4 /* RepoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoModel.swift; sourceTree = "<group>"; };
+		0CD20FE022B9B83B009F56C5 /* RepoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepoView.xib; sourceTree = "<group>"; };
+		0CD20FE222B9B863009F56C5 /* RepoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,8 @@
 				0CCEB1CE22B99E2C00822EE4 /* RepoModel.swift */,
 				0CCEB1C222B99BB800822EE4 /* Assets.xcassets */,
 				0CCEB1C422B99BB800822EE4 /* Main.storyboard */,
+				0CD20FE022B9B83B009F56C5 /* RepoView.xib */,
+				0CD20FE222B9B863009F56C5 /* RepoView.swift */,
 				0CCEB1C722B99BB800822EE4 /* Info.plist */,
 				0CCEB1C822B99BB800822EE4 /* RepoViz.entitlements */,
 			);
@@ -133,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CCEB1C322B99BB800822EE4 /* Assets.xcassets in Resources */,
+				0CD20FE122B9B83B009F56C5 /* RepoView.xib in Resources */,
 				0CCEB1C622B99BB800822EE4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,6 +153,7 @@
 			files = (
 				0CCEB1C122B99BB700822EE4 /* ViewController.swift in Sources */,
 				0CCEB1BF22B99BB700822EE4 /* AppDelegate.swift in Sources */,
+				0CD20FE322B9B863009F56C5 /* RepoView.swift in Sources */,
 				0CCEB1CF22B99E2C00822EE4 /* RepoModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

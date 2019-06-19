@@ -2,47 +2,75 @@ import Cocoa
 
 class ViewController: NSViewController {
 
-    @IBOutlet var currentBranchTextField: NSTextField!
-    @IBOutlet var numberOfCommitsBehindRemoteTextField: NSTextField!
-    @IBOutlet var timeIntervalBehindRemoteTextField: NSTextField!
-    @IBOutlet var latestCommitDateTextField: NSTextField!
-    @IBOutlet var latestRemoteCommitDateTextField: NSTextField!
+    // MARK: - Constants
 
-    @IBAction func refreshButtonClicked(sender: Any) {
-        reloadUI()
-    }
-    
+    let repoParentFolderPath = "/Users/liam/repos/"
+    let repoNames = [
+        "ios-mobile-client",
+        "ios-mobile-sdk",
+        "mobile-client-configurations"
+    ]
+
+    // MARK: - Interface Build Outlets
+
+    @IBOutlet var repoStackView: NSStackView!
+
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         reloadUI()
     }
 
-    private func reloadUI() {
-        let hardCodedRepo = RepoModel(name: "ios-mobile-client", repoParentFolderPath: URL(fileURLWithPath: "/Users/liam/repos/"))
-
-        currentBranchTextField.stringValue = hardCodedRepo.branchName ?? "ERROR"
-        numberOfCommitsBehindRemoteTextField.stringValue = hardCodedRepo.numberOfCommitsBehindRemote.map { String($0) } ?? "ERROR"
-
-        let dateComponentsFormatter = DateComponentsFormatter()
-        dateComponentsFormatter.unitsStyle = .abbreviated
-        timeIntervalBehindRemoteTextField.stringValue = hardCodedRepo.timeIntervalBehindRemote
-            .flatMap { dateComponentsFormatter.string(from: $0)} ?? "ERROR"
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .medium
-
-        latestCommitDateTextField.stringValue = hardCodedRepo.latestCommitDate
-            .map { dateFormatter.string(from: $0)} ?? "ERROR"
-        latestRemoteCommitDateTextField.stringValue = hardCodedRepo.latestRemoteCommitDate
-            .map { dateFormatter.string(from: $0)} ?? "ERROR"
-    }
-
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
         }
+    }
+
+    // MARK: - Interface Builder Actions
+
+    @IBAction func refreshButtonClicked(sender: Any) {
+        reloadUI()
+    }
+}
+
+private extension ViewController {
+
+    // MARK: - Functions
+
+    func reloadUI() {
+        repoNames.forEach {
+            let repoName = RepoModel(
+                name: $0,
+                repoParentFolderPath: URL(fileURLWithPath: repoParentFolderPath)
+            )
+
+            let repoView = RepoView()
+            repoStackView.addArrangedSubview(repoView)
+
+            repoView.repoNameTextField.stringValue = repoName.name
+            repoView.currentBranchTextField.stringValue = repoName.branchName ?? "ERROR"
+
+            repoView.numberOfCommitsBehindRemoteTextField.stringValue = repoName.numberOfCommitsBehindRemote
+                .map { String($0) } ?? "ERROR"
+
+            let dateComponentsFormatter = DateComponentsFormatter()
+            dateComponentsFormatter.unitsStyle = .abbreviated
+            repoView.timeIntervalBehindRemoteTextField.stringValue = repoName.timeIntervalBehindRemote
+                .flatMap { dateComponentsFormatter.string(from: $0)} ?? "ERROR"
+
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .medium
+
+            repoView.latestCommitDateTextField.stringValue = repoName.latestCommitDate
+                .map { dateFormatter.string(from: $0)} ?? "ERROR"
+            repoView.latestRemoteCommitDateTextField.stringValue = repoName.latestRemoteCommitDate
+                .map { dateFormatter.string(from: $0)} ?? "ERROR"
+        }
+
     }
 }
 
