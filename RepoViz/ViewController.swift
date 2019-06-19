@@ -7,10 +7,18 @@ class ViewController: NSViewController {
     @IBOutlet var timeIntervalBehindRemoteTextField: NSTextField!
     @IBOutlet var latestCommitDateTextField: NSTextField!
     @IBOutlet var latestRemoteCommitDateTextField: NSTextField!
+
+    @IBAction func refreshButtonClicked(sender: Any) {
+        reloadUI()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        reloadUI()
+    }
+
+    private func reloadUI() {
         let hardCodedRepo = RepoModel(name: "ios-mobile-client", repoParentFolderPath: URL(fileURLWithPath: "/Users/liam/repos/"))
 
         currentBranchTextField.stringValue = hardCodedRepo.branchName ?? "ERROR"

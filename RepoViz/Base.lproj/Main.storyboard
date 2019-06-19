@@ -690,6 +690,20 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <toolbar key="toolbar" implicitIdentifier="58417112-5537-4777-8AA6-D8F23D20DC97" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="Q4I-nb-uju">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="B37371E0-E20F-47B1-804F-15805797414D" label="Refresh" paletteLabel="Refresh" tag="-1" image="NSRefreshTemplate" id="h3f-sX-Yit">
+                                    <size key="minSize" width="11" height="15"/>
+                                    <size key="maxSize" width="11" height="15"/>
+                                    <connections>
+                                        <action selector="refreshButtonClickedWithSender:" target="Oky-zY-oP4" id="rgY-To-NJm"/>
+                                    </connections>
+                                </toolbarItem>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="h3f-sX-Yit"/>
+                            </defaultToolbarItems>
+                        </toolbar>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
@@ -862,4 +876,7 @@
             <point key="canvasLocation" x="75" y="655"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSRefreshTemplate" width="11" height="15"/>
+    </resources>
 </document>
