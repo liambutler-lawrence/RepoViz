@@ -35,19 +35,24 @@ private extension ViewController {
         repoStackView.subviews.forEach { $0.removeFromSuperview() }
 
         let repoGraphModel = RepoGraphModel()
-        repoGraphModel.repoModels.forEach { repoModel in
+        repoGraphModel.repoModels.forEach { repoViewModel in
+            let repoModel = repoViewModel.repoModel
 
             let repoView = RepoView()
             repoStackView.addArrangedSubview(repoView)
 
             repoView.repoNameTextField.stringValue = repoModel.name
+            repoView.repoNameTextField.textColor = repoViewModel.color
+
             repoView.currentBranchTextField.stringValue = repoModel.branchName ?? "ERROR"
+            repoView.currentBranchTextField.textColor = repoViewModel.color
 
             repoView.numberOfCommitsBehindRemoteTextField.stringValue = repoModel.numberOfCommitsBehindRemote
                 .map { String($0) } ?? "ERROR"
 
             let dateComponentsFormatter = DateComponentsFormatter()
             dateComponentsFormatter.unitsStyle = .abbreviated
+
             repoView.timeIntervalBehindRemoteTextField.stringValue = repoModel.timeIntervalBehindRemote
                 .flatMap { dateComponentsFormatter.string(from: $0)} ?? "ERROR"
 
