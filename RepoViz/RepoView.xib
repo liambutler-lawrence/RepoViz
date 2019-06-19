@@ -9,11 +9,16 @@
         <customObject id="-2" userLabel="File's Owner" customClass="RepoView" customModule="RepoViz" customModuleProvider="target">
             <connections>
                 <outlet property="currentBranchTextField" destination="2oE-PM-RWz" id="hQg-7o-WwM"/>
+                <outlet property="divergedFromDevelopCommitDateTextField" destination="j33-Nj-MsZ" id="Veu-oF-vAh"/>
+                <outlet property="divergedFromDevelopCommitHashTextField" destination="dnD-qS-o5X" id="BjF-DS-sIX"/>
                 <outlet property="latestCommitDateTextField" destination="rlS-Oy-G8t" id="TTw-O9-g7F"/>
+                <outlet property="latestDevelopCommitDateTextField" destination="Kbl-at-xV8" id="8Wl-ks-iRV"/>
                 <outlet property="latestRemoteCommitDateTextField" destination="Lzk-NE-Rkc" id="PcB-wc-G8o"/>
                 <outlet property="numberOfCommitsBehindRemoteTextField" destination="B3N-ij-3ib" id="ivz-Bp-cWD"/>
+                <outlet property="numberOfCommitsDivergedFromDevelopTextField" destination="NhX-L8-P9X" id="git-Vg-Aly"/>
                 <outlet property="repoNameTextField" destination="PaU-Vu-5xV" id="QYt-42-sgR"/>
                 <outlet property="timeIntervalBehindRemoteTextField" destination="ULE-z8-1vv" id="cQy-Xo-f59"/>
+                <outlet property="timeIntervalSinceDivergedFromDevelopTextField" destination="M6Z-h9-vMN" id="HKG-cl-fV7"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -27,10 +32,10 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3og-XW-oAk">
-                            <rect key="frame" x="0.0" y="134" width="241" height="136"/>
+                            <rect key="frame" x="0.0" y="14" width="260" height="256"/>
                             <subviews>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LEJ-Ce-40T">
-                                    <rect key="frame" x="-2" y="120" width="78" height="16"/>
+                                    <rect key="frame" x="-2" y="240" width="78" height="16"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Repo name" id="mj3-yR-6C1">
                                         <font key="font" metaFont="systemHeavy" size="13"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -38,15 +43,23 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oIW-jr-MoW">
-                                    <rect key="frame" x="-2" y="96" width="96" height="16"/>
+                                    <rect key="frame" x="-2" y="216" width="96" height="16"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Current branch" id="ROr-hh-mvr">
                                         <font key="font" usesAppearanceFont="YES"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9PM-nx-3p2">
+                                    <rect key="frame" x="-2" y="192" width="121" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Latest commit date" id="yWu-LH-y6d">
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ujb-6o-MQJ">
-                                    <rect key="frame" x="-2" y="72" width="215" height="16"/>
+                                    <rect key="frame" x="-2" y="168" width="215" height="16"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Number of commits behind remote" id="FZ4-hq-leF">
                                         <font key="font" usesAppearanceFont="YES"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -54,24 +67,56 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yj3-yT-Xmf">
-                                    <rect key="frame" x="-2" y="48" width="174" height="16"/>
+                                    <rect key="frame" x="-2" y="144" width="174" height="16"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Time interval behind remote" id="TNW-8b-Dge">
                                         <font key="font" usesAppearanceFont="YES"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9PM-nx-3p2">
-                                    <rect key="frame" x="-2" y="24" width="121" height="16"/>
-                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Latest commit date" id="yWu-LH-y6d">
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dma-d9-VXv">
+                                    <rect key="frame" x="-2" y="120" width="168" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Latest remote commit date" id="Pxv-WZ-S0S">
                                         <font key="font" usesAppearanceFont="YES"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dma-d9-VXv">
-                                    <rect key="frame" x="-2" y="0.0" width="168" height="16"/>
-                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Latest remote commit date" id="Pxv-WZ-S0S">
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EPN-fE-npz">
+                                    <rect key="frame" x="-2" y="96" width="264" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Number of commits diverged from develop" id="Ka8-2p-Pt2">
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TZG-xX-eVD">
+                                    <rect key="frame" x="-2" y="72" width="257" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Time interval since diverged from develop" id="cVl-d8-Rnf">
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yXG-K9-1uW">
+                                    <rect key="frame" x="-2" y="48" width="173" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Latest develop commit date" id="kTD-NO-2ta">
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UI4-cD-OxY">
+                                    <rect key="frame" x="-2" y="24" width="221" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Diverged from develop commit date" id="gna-6W-39W">
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w75-Te-YqW">
+                                    <rect key="frame" x="-2" y="0.0" width="223" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Diverged from develop commit hash" id="itY-sy-vg9">
                                         <font key="font" usesAppearanceFont="YES"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -85,8 +130,18 @@
                                 <integer value="1000"/>
                                 <integer value="1000"/>
                                 <integer value="1000"/>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
                             </visibilityPriorities>
                             <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
                                 <real value="3.4028234663852886e+38"/>
                                 <real value="3.4028234663852886e+38"/>
                                 <real value="3.4028234663852886e+38"/>
@@ -96,10 +151,10 @@
                             </customSpacing>
                         </stackView>
                         <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aUm-Ik-8mr">
-                            <rect key="frame" x="249" y="134" width="240" height="136"/>
+                            <rect key="frame" x="268" y="14" width="221" height="256"/>
                             <subviews>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PaU-Vu-5xV">
-                                    <rect key="frame" x="-2" y="120" width="23" height="16"/>
+                                    <rect key="frame" x="-2" y="240" width="23" height="16"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" title="&lt;&gt;" id="hWg-4o-46I">
                                         <font key="font" metaFont="systemHeavy" size="13"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -107,15 +162,23 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2oE-PM-RWz">
-                                    <rect key="frame" x="-2" y="96" width="21" height="16"/>
+                                    <rect key="frame" x="-2" y="216" width="21" height="16"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" title="&lt;&gt;" id="AbF-3Z-Ny2">
                                         <font key="font" usesAppearanceFont="YES"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rlS-Oy-G8t">
+                                    <rect key="frame" x="-2" y="192" width="21" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="&lt;&gt;" id="Pcv-DU-0Uj">
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="B3N-ij-3ib">
-                                    <rect key="frame" x="-2" y="72" width="21" height="16"/>
+                                    <rect key="frame" x="-2" y="168" width="21" height="16"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" title="&lt;&gt;" id="K2h-ce-WBY">
                                         <font key="font" usesAppearanceFont="YES"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -123,24 +186,56 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ULE-z8-1vv">
-                                    <rect key="frame" x="-2" y="48" width="21" height="16"/>
+                                    <rect key="frame" x="-2" y="144" width="21" height="16"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" title="&lt;&gt;" id="Fib-NM-n3N">
                                         <font key="font" usesAppearanceFont="YES"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rlS-Oy-G8t">
-                                    <rect key="frame" x="-2" y="24" width="21" height="16"/>
-                                    <textFieldCell key="cell" lineBreakMode="clipping" title="&lt;&gt;" id="Pcv-DU-0Uj">
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Lzk-NE-Rkc">
+                                    <rect key="frame" x="-2" y="120" width="21" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="&lt;&gt;" id="RDB-Y1-Wev">
                                         <font key="font" usesAppearanceFont="YES"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Lzk-NE-Rkc">
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NhX-L8-P9X">
+                                    <rect key="frame" x="-2" y="96" width="21" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="&lt;&gt;" id="hmb-Gh-gLx">
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M6Z-h9-vMN">
+                                    <rect key="frame" x="-2" y="72" width="21" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="&lt;&gt;" id="klG-5Z-i0e">
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kbl-at-xV8">
+                                    <rect key="frame" x="-2" y="48" width="21" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="&lt;&gt;" id="Jpp-76-ReD">
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j33-Nj-MsZ">
+                                    <rect key="frame" x="-2" y="24" width="21" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="&lt;&gt;" id="XZ5-jn-AvC">
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dnD-qS-o5X">
                                     <rect key="frame" x="-2" y="0.0" width="21" height="16"/>
-                                    <textFieldCell key="cell" lineBreakMode="clipping" title="&lt;&gt;" id="RDB-Y1-Wev">
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="&lt;&gt;" id="IUk-Ea-8h8">
                                         <font key="font" usesAppearanceFont="YES"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -154,8 +249,18 @@
                                 <integer value="1000"/>
                                 <integer value="1000"/>
                                 <integer value="1000"/>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
                             </visibilityPriorities>
                             <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
                                 <real value="3.4028234663852886e+38"/>
                                 <real value="3.4028234663852886e+38"/>
                                 <real value="3.4028234663852886e+38"/>

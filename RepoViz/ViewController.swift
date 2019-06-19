@@ -41,20 +41,36 @@ private extension ViewController {
             let repoView = RepoView()
             repoStackView.addArrangedSubview(repoView)
 
+            // Colored Strings
+
             repoView.repoNameTextField.stringValue = repoModel.name
             repoView.repoNameTextField.textColor = repoViewModel.color
 
             repoView.currentBranchTextField.stringValue = repoModel.branchName ?? "ERROR"
             repoView.currentBranchTextField.textColor = repoViewModel.color
 
+            // Strings
+
+            repoView.divergedFromDevelopCommitHashTextField.stringValue = repoModel.divergedFromDevelopCommitHash ?? "ERROR"
+
+            // Number of Commits
+
             repoView.numberOfCommitsBehindRemoteTextField.stringValue = repoModel.numberOfCommitsBehindRemote
-                .map { String($0) } ?? "ERROR"
+                .map { "\($0.behind) behind, \($0.ahead) ahead" } ?? "ERROR"
+            repoView.numberOfCommitsDivergedFromDevelopTextField.stringValue = repoModel.numberOfCommitsDivergedFromRemoteDevelop
+                .map { "\($0.behind) behind, \($0.ahead) ahead" } ?? "ERROR"
+
+            // Time Intervals
 
             let dateComponentsFormatter = DateComponentsFormatter()
             dateComponentsFormatter.unitsStyle = .abbreviated
 
             repoView.timeIntervalBehindRemoteTextField.stringValue = repoModel.timeIntervalBehindRemote
                 .flatMap { dateComponentsFormatter.string(from: $0)} ?? "ERROR"
+            repoView.timeIntervalSinceDivergedFromDevelopTextField.stringValue = repoModel.timeIntervalSinceDivergedFromRemoteDevelop
+                .flatMap { dateComponentsFormatter.string(from: $0)} ?? "ERROR"
+
+            // Dates
 
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .medium
@@ -63,6 +79,10 @@ private extension ViewController {
             repoView.latestCommitDateTextField.stringValue = repoModel.latestCommitDate
                 .map { dateFormatter.string(from: $0)} ?? "ERROR"
             repoView.latestRemoteCommitDateTextField.stringValue = repoModel.latestRemoteCommitDate
+                .map { dateFormatter.string(from: $0)} ?? "ERROR"
+            repoView.latestDevelopCommitDateTextField.stringValue = repoModel.latestRemoteDevelopCommitDate
+                .map { dateFormatter.string(from: $0)} ?? "ERROR"
+            repoView.divergedFromDevelopCommitDateTextField.stringValue = repoModel.divergedFromDevelopCommitDate
                 .map { dateFormatter.string(from: $0)} ?? "ERROR"
         }
     }

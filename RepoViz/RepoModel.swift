@@ -3,8 +3,17 @@ import ShellOut
 
 struct RepoModel {
 
+    struct NumberOfCommits {
+        let behind: Int
+        let ahead: Int
+    }
+
+    // MARK: - Constant Properties
+
     let name: String
     let repoParentFolderPath: URL
+
+    // MARK: - Computed Properties
 
     var shellCommandDirectory: String {
         return repoParentFolderPath.appendingPathComponent(name, isDirectory: true).path
@@ -23,15 +32,42 @@ struct RepoModel {
         return dateOfLatestCommit(onBranch: branchName)
     }
 
-    var numberOfCommitsBehindRemote: Int? {
-        return branchName
-            .flatMap { try? shellOut(to: "git rev-list --count origin/\($0)...\($0)", at: shellCommandDirectory) }
-            .flatMap { Int($0) }
-    }
-
     var latestRemoteCommitDate: Date? {
         return dateOfLatestCommit(onBranch: branchName.map { "origin/\($0)" })
     }
+
+    var latestRemoteDevelopCommitDate: Date? {
+        return dateOfLatestCommit(onBranch: "origin/develop")
+    }
+
+    var numberOfCommitsBehindRemote: NumberOfCommits? {
+        return branchName.flatMap { numberOfCommitsBetween(upstreamBranch: "origin/\($0)", downstreamBranch: $0) }
+    }
+
+    var divergedFromDevelopCommitDate: Date? {
+        return divergedFromDevelopCommitHash.flatMap { dateOfLatestCommit(onBranch: $0) }
+    }
+
+    var divergedFromDevelopCommitHash: String? {
+        return branchName.flatMap { try? shellOut(to: "git merge-base \($0) origin/develop", at: shellCommandDirectory) }
+    }
+
+    var numberOfCommitsDivergedFromRemoteDevelop: NumberOfCommits? {
+        return branchName.flatMap { numberOfCommitsBetween(upstreamBranch: "origin/develop", downstreamBranch: $0) }
+    }
+
+    var timeIntervalBehindRemote: TimeInterval? {
+        return latestCommitDate.flatMap { latestRemoteCommitDate?.timeIntervalSince($0) }
+    }
+
+    var timeIntervalSinceDivergedFromRemoteDevelop: TimeInterval? {
+        return divergedFromDevelopCommitDate.flatMap { latestRemoteDevelopCommitDate?.timeIntervalSince($0) }
+    }
+}
+
+private extension RepoModel {
+
+    // MARK: - Functions
 
     func dateOfLatestCommit(onBranch branchName: String?) -> Date? {
         return branchName
@@ -40,8 +76,20 @@ struct RepoModel {
             .map { Date(timeIntervalSince1970: $0) }
     }
 
-    var timeIntervalBehindRemote: TimeInterval? {
-        return latestCommitDate.flatMap { latestRemoteCommitDate?.timeIntervalSince($0) }
+    func numberOfCommitsBetween(upstreamBranch: String, downstreamBranch: String) -> NumberOfCommits? {
+        let optionalNumberOfCommits = try? shellOut(to: "git rev-list --count --left-right \(upstreamBranch)...\(downstreamBranch)", at: shellCommandDirectory)
+            .components(separatedBy: .whitespaces)
+            .filter { !$0.isEmpty }
+            .map { Int($0) }
+
+        guard let numberOfCommits = optionalNumberOfCommits,
+            numberOfCommits.count == 2,
+            let numberOfCommitsBehind = numberOfCommits.first!,
+            let numberOfCommitsAhead = numberOfCommits.last! else {
+                return nil
+        }
+
+        return NumberOfCommits(behind: numberOfCommitsBehind, ahead: numberOfCommitsAhead)
     }
 }
 
