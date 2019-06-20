@@ -28,7 +28,21 @@ struct RepoViewModel {
             return nil
         }
 
-        return "Behind origin/\(branchName) by \(numberOfCommitsDivergedFromRemote.behind) commits (last updated \(timeIntervalBehindRemote) ago)"
+        return "Behind origin/\(branchName) by \(numberOfCommitsDivergedFromRemote.behind) commits (\(timeIntervalBehindRemote) worth)"
+    }
+
+    var warningAheadOfRemote: String? {
+        guard let branchName = repoModel.branchName,
+            let numberOfCommitsDivergedFromRemote = repoModel.numberOfCommitsDivergedFromRemote,
+            let timeIntervalAheadOfRemote = repoModel.timeIntervalAheadOfRemote.flatMap({ string(for: $0) }) else {
+                return "Could not determine if any commits not pushed to remote"
+        }
+
+        guard numberOfCommitsDivergedFromRemote.ahead > 0 else {
+            return nil
+        }
+
+        return "\(numberOfCommitsDivergedFromRemote.ahead) commits not pushed to origin/\(branchName) (\(timeIntervalAheadOfRemote) worth)"
     }
 
     var warningBehindDevelop: String? {
@@ -45,21 +59,7 @@ struct RepoViewModel {
             return nil
         }
 
-        return "Behind origin/develop by \(numberOfCommitsDivergedFromDevelop.behind) commits (diverged \(timeIntervalSinceDivergedFromRemoteDevelop) ago)"
-    }
-
-    var warningAheadOfRemote: String? {
-        guard let branchName = repoModel.branchName,
-            let numberOfCommitsDivergedFromRemote = repoModel.numberOfCommitsDivergedFromRemote,
-            let timeIntervalBehindRemote = repoModel.timeIntervalBehindRemote.flatMap({ string(for: $0) }) else {
-                return "Could not determine if any commits not pushed to remote"
-        }
-
-        guard numberOfCommitsDivergedFromRemote.ahead > 0 else {
-            return nil
-        }
-
-        return "\(numberOfCommitsDivergedFromRemote.ahead) commits not pushed to origin/\(branchName) (last pushed \(timeIntervalBehindRemote) ago)"
+        return "Behind origin/develop by \(numberOfCommitsDivergedFromDevelop.behind) commits (\(timeIntervalSinceDivergedFromRemoteDevelop) worth)"
     }
 
     var warningNotOnAssociatedBranch: String? {

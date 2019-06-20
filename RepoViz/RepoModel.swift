@@ -52,12 +52,24 @@ struct RepoModel {
         return branchName.flatMap { try? shellOut(to: "git merge-base \($0) origin/develop", at: shellCommandDirectory) }
     }
 
+    var divergedFromRemoteCommitDate: Date? {
+        return divergedFromRemoteCommitHash.flatMap { dateOfLatestCommit(onBranch: $0) }
+    }
+
+    var divergedFromRemoteCommitHash: String? {
+        return branchName.flatMap { try? shellOut(to: "git merge-base \($0) origin/\($0)", at: shellCommandDirectory) }
+    }
+
     var numberOfCommitsDivergedFromRemoteDevelop: NumberOfCommits? {
         return branchName.flatMap { numberOfCommitsBetween(upstreamBranch: "origin/develop", downstreamBranch: $0) }
     }
 
     var timeIntervalBehindRemote: TimeInterval? {
-        return latestCommitDate.flatMap { latestRemoteCommitDate?.timeIntervalSince($0) }
+        return divergedFromRemoteCommitDate.flatMap { latestRemoteCommitDate?.timeIntervalSince($0) }
+    }
+
+    var timeIntervalAheadOfRemote: TimeInterval? {
+        return divergedFromRemoteCommitDate.flatMap { latestCommitDate?.timeIntervalSince($0) }
     }
 
     var timeIntervalSinceDivergedFromRemoteDevelop: TimeInterval? {
