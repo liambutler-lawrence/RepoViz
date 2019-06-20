@@ -14,12 +14,6 @@ class ViewController: NSViewController {
         reloadUI()
     }
 
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
-    }
-
     // MARK: - Interface Builder Actions
 
     @IBAction func refreshButtonClicked(sender: Any) {
@@ -38,8 +32,9 @@ private extension ViewController {
         repoGraphModel.repoModels.forEach { repoViewModel in
             let repoModel = repoViewModel.repoModel
 
+            // - Repo View
+
             let repoView = RepoView()
-            repoStackView.addArrangedSubview(repoView)
 
             // Colored Strings
 
@@ -84,6 +79,41 @@ private extension ViewController {
                 .map { dateFormatter.string(from: $0)} ?? "ERROR"
             repoView.divergedFromDevelopCommitDateTextField.stringValue = repoModel.divergedFromDevelopCommitDate
                 .map { dateFormatter.string(from: $0)} ?? "ERROR"
+
+            // - Repo Warning View
+
+            let repoWarningView = RepoWarningView()
+
+            // Colored Strings
+
+            repoWarningView.repoNameTextField.stringValue = repoModel.name
+            repoWarningView.repoNameTextField.textColor = repoViewModel.color
+
+            repoWarningView.branchNameTextField.stringValue = repoModel.branchName ?? "ERROR"
+            repoWarningView.branchNameTextField.textColor = repoViewModel.color
+
+            // Warnings
+
+            [
+                repoViewModel.warningBehindRemote,
+                repoViewModel.warningAheadOfRemote,
+                repoViewModel.warningBehindDevelop,
+                repoViewModel.warningUncommitedChanges,
+                repoViewModel.warningNotOnAssociatedBranch
+                ]
+                .compactMap { $0 }
+                .forEach { warning in
+                    let warningView = NSTextField(labelWithString: warning)
+                    repoWarningView.warningsStackView.addArrangedSubview(warningView)
+            }
+
+            let individualRepoStackView = NSStackView()
+            individualRepoStackView.orientation = .horizontal
+
+            individualRepoStackView.addArrangedSubview(repoView)
+            individualRepoStackView.addArrangedSubview(repoWarningView)
+
+            repoStackView.addArrangedSubview(individualRepoStackView)
         }
     }
 }

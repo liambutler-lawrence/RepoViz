@@ -18,6 +18,8 @@
 		0CD20FE522B9C5CF009F56C5 /* RepoGraphModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD20FE422B9C5CF009F56C5 /* RepoGraphModel.swift */; };
 		0CD5682122BB025B00B0EC27 /* RepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD5682022BB025B00B0EC27 /* RepoViewModel.swift */; };
 		0CD5682322BB0E8A00B0EC27 /* RepoWarningView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD5682222BB0E8A00B0EC27 /* RepoWarningView.xib */; };
+		0CD5682522BB0EF400B0EC27 /* RepoWarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD5682422BB0EF400B0EC27 /* RepoWarningView.swift */; };
+		0CD5682722BB0F0700B0EC27 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD5682622BB0F0700B0EC27 /* NibView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		0CD20FE422B9C5CF009F56C5 /* RepoGraphModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoGraphModel.swift; sourceTree = "<group>"; };
 		0CD5682022BB025B00B0EC27 /* RepoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewModel.swift; sourceTree = "<group>"; };
 		0CD5682222BB0E8A00B0EC27 /* RepoWarningView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepoWarningView.xib; sourceTree = "<group>"; };
+		0CD5682422BB0EF400B0EC27 /* RepoWarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoWarningView.swift; sourceTree = "<group>"; };
+		0CD5682622BB0F0700B0EC27 /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +80,9 @@
 				0CCEB1C422B99BB800822EE4 /* Main.storyboard */,
 				0CD20FE022B9B83B009F56C5 /* RepoView.xib */,
 				0CD5682222BB0E8A00B0EC27 /* RepoWarningView.xib */,
+				0CD5682422BB0EF400B0EC27 /* RepoWarningView.swift */,
 				0CD20FE222B9B863009F56C5 /* RepoView.swift */,
+				0CD5682622BB0F0700B0EC27 /* NibView.swift */,
 				0CCEB1C722B99BB800822EE4 /* Info.plist */,
 				0CCEB1C822B99BB800822EE4 /* RepoViz.entitlements */,
 			);
@@ -165,7 +171,9 @@
 				0CCEB1C122B99BB700822EE4 /* ViewController.swift in Sources */,
 				0CCEB1BF22B99BB700822EE4 /* AppDelegate.swift in Sources */,
 				0CD20FE522B9C5CF009F56C5 /* RepoGraphModel.swift in Sources */,
+				0CD5682722BB0F0700B0EC27 /* NibView.swift in Sources */,
 				0CD20FE322B9B863009F56C5 /* RepoView.swift in Sources */,
+				0CD5682522BB0EF400B0EC27 /* RepoWarningView.swift in Sources */,
 				0CCEB1CF22B99E2C00822EE4 /* RepoModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

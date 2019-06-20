@@ -6,7 +6,13 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="RepoView" customModule="RepoViz" customModuleProvider="target"/>
+        <customObject id="-2" userLabel="File's Owner" customClass="RepoWarningView" customModule="RepoViz" customModuleProvider="target">
+            <connections>
+                <outlet property="branchNameTextField" destination="UCh-WM-QLd" id="8Mv-LB-H6N"/>
+                <outlet property="repoNameTextField" destination="sU3-07-7Te" id="tdr-za-QMr"/>
+                <outlet property="warningsStackView" destination="vv3-Yh-dXH" id="jun-Ab-Z2M"/>
+            </connections>
+        </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="UR7-re-343">
