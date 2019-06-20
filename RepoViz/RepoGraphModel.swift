@@ -1,11 +1,6 @@
 import Cocoa
 import Foundation
 
-struct RepoViewModel {
-    let repoModel: RepoModel
-    let color: NSColor
-}
-
 struct RepoGraphModel {
 
     // MARK: - Constants

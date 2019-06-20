@@ -40,7 +40,7 @@ struct RepoModel {
         return dateOfLatestCommit(onBranch: "origin/develop")
     }
 
-    var numberOfCommitsBehindRemote: NumberOfCommits? {
+    var numberOfCommitsDivergedFromRemote: NumberOfCommits? {
         return branchName.flatMap { numberOfCommitsBetween(upstreamBranch: "origin/\($0)", downstreamBranch: $0) }
     }
 

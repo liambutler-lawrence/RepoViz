@@ -55,7 +55,7 @@ private extension ViewController {
 
             // Number of Commits
 
-            repoView.numberOfCommitsBehindRemoteTextField.stringValue = repoModel.numberOfCommitsBehindRemote
+            repoView.numberOfCommitsBehindRemoteTextField.stringValue = repoModel.numberOfCommitsDivergedFromRemote
                 .map { "\($0.behind) behind, \($0.ahead) ahead" } ?? "ERROR"
             repoView.numberOfCommitsDivergedFromDevelopTextField.stringValue = repoModel.numberOfCommitsDivergedFromRemoteDevelop
                 .map { "\($0.behind) behind, \($0.ahead) ahead" } ?? "ERROR"

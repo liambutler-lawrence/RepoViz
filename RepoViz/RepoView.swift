@@ -31,13 +31,6 @@ class RepoView: NSView {
         super.init(coder: coder)
         sharedInit()
     }
-
-    // MARK: - Lifecycle
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        print("hello")
-    }
 }
 
 private extension RepoView {

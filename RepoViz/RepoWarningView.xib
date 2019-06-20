@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14810.11"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="RepoView" customModule="RepoViz" customModuleProvider="target"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="UR7-re-343">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sU3-07-7Te">
+                    <rect key="frame" x="18" y="229" width="131" height="23"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="&lt;repo name&gt;" id="uOj-FK-dSn">
+                        <font key="font" metaFont="systemBold" size="20"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UCh-WM-QLd">
+                    <rect key="frame" x="18" y="205" width="100" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="&lt;branch name&gt;" id="36X-VP-3no">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vv3-Yh-dXH">
+                    <rect key="frame" x="20" y="20" width="440" height="177"/>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="UCh-WM-QLd" firstAttribute="top" secondItem="sU3-07-7Te" secondAttribute="bottom" constant="8" id="0SW-g1-78O"/>
+                <constraint firstItem="vv3-Yh-dXH" firstAttribute="top" secondItem="UCh-WM-QLd" secondAttribute="bottom" constant="8" id="3xj-6g-5wM"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sU3-07-7Te" secondAttribute="trailing" constant="20" id="62M-Jq-rpg"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UCh-WM-QLd" secondAttribute="trailing" constant="20" id="7W5-uj-abr"/>
+                <constraint firstItem="vv3-Yh-dXH" firstAttribute="leading" secondItem="UCh-WM-QLd" secondAttribute="leading" id="Gfl-Ag-MMR"/>
+                <constraint firstAttribute="trailing" secondItem="vv3-Yh-dXH" secondAttribute="trailing" constant="20" id="PTE-Sn-plL"/>
+                <constraint firstAttribute="bottom" secondItem="vv3-Yh-dXH" secondAttribute="bottom" constant="20" id="Y5f-Js-GaA"/>
+                <constraint firstItem="UCh-WM-QLd" firstAttribute="leading" secondItem="sU3-07-7Te" secondAttribute="leading" id="a6I-xa-h07"/>
+                <constraint firstItem="sU3-07-7Te" firstAttribute="leading" secondItem="UR7-re-343" secondAttribute="leading" constant="20" id="jNM-mU-fMA"/>
+                <constraint firstItem="sU3-07-7Te" firstAttribute="top" secondItem="UR7-re-343" secondAttribute="top" constant="20" id="xZN-ec-a6l"/>
+            </constraints>
+            <point key="canvasLocation" x="746" y="154"/>
+        </customView>
+    </objects>
+</document>
