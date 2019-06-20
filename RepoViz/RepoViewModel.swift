@@ -32,6 +32,10 @@ struct RepoViewModel {
     }
 
     var warningBehindDevelop: String? {
+        guard repoModel.branchName != "develop" else {
+            return nil
+        }
+
         guard let numberOfCommitsDivergedFromDevelop = repoModel.numberOfCommitsDivergedFromRemoteDevelop,
             let timeIntervalSinceDivergedFromRemoteDevelop = repoModel.timeIntervalSinceDivergedFromRemoteDevelop.flatMap({ string(for: $0) }) else {
                 return "Could not determine if behind remote or not"
@@ -73,7 +77,7 @@ private extension RepoViewModel {
         let dateComponentsFormatter = DateComponentsFormatter()
         dateComponentsFormatter.unitsStyle = .abbreviated
 
-        return dateComponentsFormatter.string(for: timeInterval)
+        return dateComponentsFormatter.string(from: timeInterval)
     }
     
 }

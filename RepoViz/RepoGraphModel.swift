@@ -6,14 +6,16 @@ struct RepoGraphModel {
     // MARK: - Constants
 
     let repoNames = [
+        "mobile-client-configurations",
         "ios-mobile-client",
         "ios-mobile-sdk",
-        "mobile-client-configurations"
+        "mobile-images"
     ]
     let colors: [NSColor] = [
         .red,
         .blue,
-        .green
+        .green,
+        .purple
     ]
     let repoParentFolderPath = "/Users/liam/repos/"
 

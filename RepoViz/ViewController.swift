@@ -109,6 +109,8 @@ private extension ViewController {
 
             let individualRepoStackView = NSStackView()
             individualRepoStackView.orientation = .horizontal
+            individualRepoStackView.distribution = .fillEqually
+            individualRepoStackView.alignment = .top
 
             individualRepoStackView.addArrangedSubview(repoView)
             individualRepoStackView.addArrangedSubview(repoWarningView)
